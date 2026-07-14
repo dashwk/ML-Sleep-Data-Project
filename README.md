@@ -78,7 +78,7 @@ The model's predicted probabilities also tracked Whoop's recovery score directio
 
 ## Tech stack
 
-Python, pandas, scikit-learn (LogisticRegression, RandomForestClassifier, GridSearchCV, Pipeline, StandardScaler), matplotlib/seaborn for visualization
+Python, pandas, scikit-learn (LogisticRegression, RandomForestClassifier, GridSearchCV, Pipeline, StandardScaler)
 
 ## Future work
 
