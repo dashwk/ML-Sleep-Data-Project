@@ -15,7 +15,7 @@ While training for a 23-mile bike race, I wanted a way to quantify how lifestyle
 
 **Target:** `felt_rested` (binary) — chosen over a manually-binarized sleep quality score because it's a natural, pre-labeled recovery/readiness outcome, closely aligned with what wearable devices like Whoop attempt to measure.
 
-**Note on iteration:** an earlier version of this project used a smaller (400-record) sleep dataset. After deduplication, that dataset contained only ~109 unique records — too small for stable cross-validation (fold accuracy ranged 77%–100%). I sourced this larger dataset specifically to get a more statistically reliable result; the earlier version is preserved as `vi_sleep_model.ipynb` for reference.
+**Note on iteration:** an earlier version of this project used a smaller (400-record) sleep dataset. After deduplication, that dataset contained only ~109 unique records — too small for stable cross-validation (fold accuracy ranged 77%–100%). I sourced this larger dataset specifically to get a more statistically reliable result; the earlier version is preserved as `vi_sleep_model.ipynb` for reference. 
 
 ## Features
 
@@ -42,7 +42,9 @@ Also excluded: `wake_episodes_per_night`, `sleep_latency_mins`, `screen_time_bef
 | Random Forest (default) | 0.723 | 0.76 | 0.80 | 0.66 | 0.61 |
 | Random Forest (balanced) | 0.718 | 0.79 | 0.73 | 0.62 | 0.69 |
 
-All four models land within a percentage point of each other on accuracy (71.6%–72.3%), reinforcing that this ceiling reflects the limits of the feature set rather than any one model's weakness — a result that held even after trimming from 15 to 12 features. As before, the more meaningful lever was `class_weight='balanced'`, which traded a modest amount of class 0 recall for a substantial improvement in class 1 recall, rather than improving performance outright.
+All four models land within a percentage point of each other on accuracy (71.6%–72.3%), reinforcing that this ceiling reflects the limits of the feature set rather than any one model's weakness — a result that held even after trimming from 15 to 12 features. As before, the more meaningful lever was `class_weight='balanced'`, which traded a modest amount of class 0 recall for a substantial improvement in class 1 recall, rather than improving performance outright. 
+
+See **final_sleep_model.ipynb** for full results.
 
 **Selected model: Logistic Regression (balanced).** In a wellness context, a false "you're rested" prediction is more consequential than the reverse — it risks pushing into a demanding day or workout without knowing the body needs recovery. Logistic regression (balanced) achieves the strongest class 1 recall (0.71) among all four variants while remaining the most interpretable model.
 
